@@ -65,9 +65,10 @@ namespace Tema4_DI
                 btn.Enabled = true;
 
                 btn.Click += new System.EventHandler(this.btnsClick);
-                //  btn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
                 buttons.Add(btn);
                 this.Controls.Add(btn);
+                //Todo: perguntarle a Curro si esto se hace?
+                //  btn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
 
             }
 
@@ -160,7 +161,7 @@ namespace Tema4_DI
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("¿Seguro que desea salir?", "Mi Aplicación",
+            if (MessageBox.Show("¿Seguro que desea salir?", "Botones en tiempo de ejecución y ratón",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
                 == DialogResult.Cancel)
             {
