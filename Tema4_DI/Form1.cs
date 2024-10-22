@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace Tema4_DI
 {
+    //Pendiente de validación y de poner Icono
 
     //    Icono
     //    título 
