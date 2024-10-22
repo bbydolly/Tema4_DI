@@ -58,7 +58,7 @@ namespace Ej2_Tema4_DI
             }
             catch (FileNotFoundException)
             {
-                this.Size = new Size(900, 300);
+                //this.Size = new Size(900, 300);
                 lblImage.Visible = false;
                 lblImage.ForeColor = Color.Red;
                 lblImage.Text = "No se ha podido encontrar la ruta de la imagen";
@@ -66,7 +66,7 @@ namespace Ej2_Tema4_DI
             }
             catch (ArgumentException)
             {
-                this.Size = new Size(900, 300);
+               // this.Size = new Size(900, 300);
                 lblImage.Visible = false;
                 lblImage.ForeColor = Color.Red;
                 lblImage.Text = "No se ha podido encontrar la ruta de la imagen";
