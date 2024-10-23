@@ -44,6 +44,7 @@ namespace Ej2_Tema4_DI
             this.txtPath = new System.Windows.Forms.TextBox();
             this.btnImagen = new System.Windows.Forms.Button();
             this.lblImage = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSalir
@@ -159,6 +160,16 @@ namespace Ej2_Tema4_DI
             this.lblImage.Text = "lblImage";
             this.lblImage.Visible = false;
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(114, 220);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 12;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // Form1
             // 
             this.AcceptButton = this.btnCambiarColor;
@@ -166,6 +177,7 @@ namespace Ej2_Tema4_DI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnSalir;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblImage);
             this.Controls.Add(this.btnImagen);
             this.Controls.Add(this.txtPath);
@@ -203,6 +215,7 @@ namespace Ej2_Tema4_DI
         private System.Windows.Forms.TextBox txtPath;
         private System.Windows.Forms.Button btnImagen;
         private System.Windows.Forms.Label lblImage;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 
