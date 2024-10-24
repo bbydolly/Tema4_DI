@@ -13,14 +13,24 @@ using System.Windows.Forms;
 
 namespace Ej2_Tema4_DI
 {
+    //Pendiente de VALIDACIÓN
+
+
+
 
     //CancelButton es una propiedad del formulario que se le asigna a un botón
+    //ShowInTaskBar--> No muestra la barra de tareas
+    //MaximizeBox/MinimizeBox a false para que no aparezcan los controles de minimizar y maximizar
+    //Cursor propiedad del formulario apra cambiar el ratón
+    //From Border Style --> Fixed fijar el formulario
     public partial class Form1 : Form
     {
         int r, g, b;
+        Color colorfondo;
         public Form1()
         {
             InitializeComponent();
+            colorfondo=this.BackColor;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -44,9 +54,9 @@ namespace Ej2_Tema4_DI
             //No cumple especificación
             //de fondo en una label
             //C:\Users\Cris\Downloads\foto.jpg
-            // lblImage.Text = "";
 
 
+            lblImage.Text = "";
             lblImage.Visible = true;
             try
             {
@@ -87,19 +97,29 @@ namespace Ej2_Tema4_DI
         {
             //Colección de controles 
             Control.ControlCollection coleccion = this.Controls;
-            foreach(Control component in coleccion)
+            foreach (Control component in coleccion)
             {
-                if(component is TextBox)
+                if (component is TextBox)
                 {
                     component.Text = "";
                 }
+                if (component is Label)
+                {
+                    if (component == lblImage)
+                    {
+                        lblImage.Image = default;
+                    }
+                }
             }
-           
+            this.BackColor = colorfondo;
+
 
         }
 
         private void btnCambiarColor_Click(object sender, EventArgs e)
         {
+
+           // if()
             lblInformativa.Text = "Introduce en cada textbox números entre 0-255 ,corresponden a colores.";
 
             if (int.TryParse(txtR.Text, out r) && int.TryParse(txtG.Text, out g) && int.TryParse(txtB.Text, out b)) //con independiencia de si devuelve true o false out contiene la cadena
@@ -122,6 +142,24 @@ namespace Ej2_Tema4_DI
 
         }
 
+        private void MouseEnterBotones(object sender, EventArgs e)
+        {
+           
+                ((Button)sender).BackColor = Color.Turquoise;
+
+            
+        }
+
+        private void MouseLeaveBotones(object sender, EventArgs e)
+        {
+          
+                ((Button)sender).BackColor = Color.White;
+
+            
+
+
+        }
+
         public bool ComprobarRangos(int rgb)
         {
             if (rgb >= 0 && rgb <= 255)
@@ -132,6 +170,21 @@ namespace Ej2_Tema4_DI
             else
             {
                 return false;
+            }
+        }
+
+        public void CambioDeFoco(object sender, EventArgs a)
+        {
+            if (sender == txtPath)//compruebo direcciones de memoria
+            {
+                this.AcceptButton = btnImagen;
+
+            }
+
+            else if (sender == txtB || sender == txtG || sender == txtR)
+            {
+
+                this.AcceptButton = btnCambiarColor;
             }
         }
     }

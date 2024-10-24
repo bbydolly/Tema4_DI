@@ -57,6 +57,8 @@ namespace Ej2_Tema4_DI
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnSalir.MouseEnter += new System.EventHandler(this.MouseEnterBotones);
+            this.btnSalir.MouseLeave += new System.EventHandler(this.MouseLeaveBotones);
             // 
             // txtR
             // 
@@ -64,6 +66,7 @@ namespace Ej2_Tema4_DI
             this.txtR.Name = "txtR";
             this.txtR.Size = new System.Drawing.Size(100, 20);
             this.txtR.TabIndex = 1;
+            this.txtR.MouseEnter += new System.EventHandler(this.CambioDeFoco);
             // 
             // txtG
             // 
@@ -71,6 +74,7 @@ namespace Ej2_Tema4_DI
             this.txtG.Name = "txtG";
             this.txtG.Size = new System.Drawing.Size(100, 20);
             this.txtG.TabIndex = 2;
+            this.txtG.MouseEnter += new System.EventHandler(this.CambioDeFoco);
             // 
             // txtB
             // 
@@ -78,6 +82,7 @@ namespace Ej2_Tema4_DI
             this.txtB.Name = "txtB";
             this.txtB.Size = new System.Drawing.Size(100, 20);
             this.txtB.TabIndex = 3;
+            this.txtB.MouseEnter += new System.EventHandler(this.CambioDeFoco);
             // 
             // btnCambiarColor
             // 
@@ -88,6 +93,8 @@ namespace Ej2_Tema4_DI
             this.btnCambiarColor.Text = "Cambiar color del fondo";
             this.btnCambiarColor.UseVisualStyleBackColor = true;
             this.btnCambiarColor.Click += new System.EventHandler(this.btnCambiarColor_Click);
+            this.btnCambiarColor.MouseEnter += new System.EventHandler(this.MouseEnterBotones);
+            this.btnCambiarColor.MouseLeave += new System.EventHandler(this.MouseLeaveBotones);
             // 
             // label1
             // 
@@ -140,6 +147,7 @@ namespace Ej2_Tema4_DI
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(504, 20);
             this.txtPath.TabIndex = 9;
+            this.txtPath.MouseEnter += new System.EventHandler(this.CambioDeFoco);
             // 
             // btnImagen
             // 
@@ -150,6 +158,8 @@ namespace Ej2_Tema4_DI
             this.btnImagen.Text = "Poner imagen de fondo";
             this.btnImagen.UseVisualStyleBackColor = true;
             this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
+            this.btnImagen.MouseEnter += new System.EventHandler(this.MouseEnterBotones);
+            this.btnImagen.MouseLeave += new System.EventHandler(this.MouseLeaveBotones);
             // 
             // lblImage
             // 
@@ -162,13 +172,15 @@ namespace Ej2_Tema4_DI
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(114, 220);
+            this.btnReset.Location = new System.Drawing.Point(370, 321);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 12;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnReset.MouseEnter += new System.EventHandler(this.MouseEnterBotones);
+            this.btnReset.MouseLeave += new System.EventHandler(this.MouseLeaveBotones);
             // 
             // Form1
             // 
@@ -191,8 +203,14 @@ namespace Ej2_Tema4_DI
             this.Controls.Add(this.txtG);
             this.Controls.Add(this.txtR);
             this.Controls.Add(this.btnSalir);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cambio de color de fondo del formulario.";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);

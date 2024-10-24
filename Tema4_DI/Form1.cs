@@ -10,9 +10,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Tema4_DI
+namespace Tema4_DI// rEVISAR COOR EN BOTONES.
+                  // Liberación botones. Eventos de teclado para Unicode
 {
-    //Pendiente de validación y de poner Icono
+    //Pendiente de VALIDACIÓN
+
+
 
     //    Icono
     //    título 
@@ -64,11 +67,13 @@ namespace Tema4_DI
                 btn.Location = new Point(xBoton, yBoton);
                 btn.Enabled = true;
 
-                btn.Click += new System.EventHandler(this.btnsClick);
+                btn.Click += new System.EventHandler(this.btnsClick); //Se gestiona todo
+                //Diferencia con MouseClick es un evento de click del ratón
                 buttons.Add(btn);
+                btn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+                //Probarlo con la barra espaciadora
                 this.Controls.Add(btn);
                 //Todo: perguntarle a Curro si esto se hace?
-                //  btn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
 
             }
 
@@ -129,6 +134,7 @@ namespace Tema4_DI
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
+            //Mouse up diferenciarlo según sea un lado del ratón u el otro, no los dos a la vez
             if (button1.BackColor == Color.Turquoise)
             {
                 button1.BackColor = Color.White;
@@ -141,23 +147,6 @@ namespace Tema4_DI
 
 
 
-        private void Form1_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Text = "Mouse Tester";
-            }
-            else
-            {
-#if CARACTER
-                this.Text = e.KeyCode.ToString(); //TECLA PULSADA K,A,F...
-#else
-                this.Text = e.KeyValue.ToString();//código asociado a la tecla ej:A--65
-                Debug.WriteLine(e.KeyCode.ToString());
-#endif
-            }
-
-        }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -168,5 +157,44 @@ namespace Tema4_DI
                 e.Cancel = true;
             }
         }
+#if DEFINE
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Escape)//Key code y key value es lo mismoe xpresado de diferentes maneras
+            {
+                this.Text = "Mouse Tester";
+            }
+            else
+            {
+
+                this.Text = e.KeyCode.ToString(); //TECLA PULSADA K,A,F...
+
+              
+
+            }
+            
+           
+
+        }
+#else 
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)//Key code y key value es lo mismoe xpresado de diferentes maneras
+            {
+                this.Text = "Mouse Tester";
+            }
+            else
+            {
+
+                this.Text = e.KeyChar.ToString(); //caracter pulsado j,i,K,L,j,p...etc (tanto mayusc como minúsculas)
+
+
+
+            }
+           
+        }
+#endif
     }
 }
