@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Tema4_DI// rEVISAR COOR EN BOTONES.
-                  // Liberación botones. Eventos de teclado para Unicode
+                  // Liberación botones---listo 
+                  // Eventos de teclado para Unicode---listo
 {
     //Pendiente de VALIDACIÓN
 
@@ -98,7 +99,9 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES.
             }
             else
             {
-                this.Text = "X: " + (e.X + x).ToString() + " Y: " + (e.Y + y).ToString(); //devuelve x e y
+
+                this.Text = "X: " + e.X.ToString() + " Y: " + e.Y.ToString();
+                // this.Text = "X: " + (e.X + x).ToString() + " Y: " + (e.Y + y).ToString(); //devuelve x e y
 
 
             }
@@ -117,10 +120,15 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES.
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
+
+
             if (e.Button == MouseButtons.Left)
             {
                 button1.BackColor = Color.Turquoise;
             }
+
+
+
             else if (e.Button == MouseButtons.Right)
             {
                 button2.BackColor = Color.Yellow;
@@ -130,19 +138,33 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES.
                 button1.BackColor = Color.Turquoise;
                 button2.BackColor = Color.Yellow;
             }
+
+
         }
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             //Mouse up diferenciarlo según sea un lado del ratón u el otro, no los dos a la vez
-            if (button1.BackColor == Color.Turquoise)
+            if (e.Button == MouseButtons.Left)
             {
                 button1.BackColor = Color.White;
+
             }
-            if (button2.BackColor == Color.Yellow)
+           
+            else if (e.Button == MouseButtons.Right)
             {
                 button2.BackColor = Color.White;
             }
+            else
+            {
+
+                button1.BackColor = Color.White;
+                button2.BackColor = Color.White;
+            }
+
+
+            
+
         }
 
 
@@ -193,7 +215,7 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES.
 
 
             }
-           
+
         }
 #endif
     }
