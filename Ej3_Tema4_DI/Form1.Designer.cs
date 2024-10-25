@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnNuevaImagen = new System.Windows.Forms.Button();
             this.cbModal = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -51,6 +52,7 @@
             this.cbModal.TabIndex = 1;
             this.cbModal.Text = "Modal";
             this.cbModal.UseVisualStyleBackColor = true;
+            this.cbModal.CheckedChanged += new System.EventHandler(this.cbModal_CheckedChanged);
             // 
             // Form1
             // 
@@ -59,8 +61,10 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.cbModal);
             this.Controls.Add(this.btnNuevaImagen);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Visor de imágenes";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

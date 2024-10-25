@@ -1,4 +1,4 @@
-﻿#define CARACTER
+﻿#define b
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,11 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Tema4_DI// rEVISAR COOR EN BOTONES.
+//Pendiente de VALIDACIÓN + correcciones acabadas
+
+namespace Tema4_DI// rEVISAR COOR EN BOTONES---Listo
                   // Liberación botones---listo 
                   // Eventos de teclado para Unicode---listo
 {
-    //Pendiente de VALIDACIÓN
+
 
 
 
@@ -100,8 +102,18 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES.
             else
             {
 
-                this.Text = "X: " + e.X.ToString() + " Y: " + e.Y.ToString();
+                //Si se hace lento funciona, es por un tema de cargar los datos?
                 // this.Text = "X: " + (e.X + x).ToString() + " Y: " + (e.Y + y).ToString(); //devuelve x e y
+
+                //Bien
+                //Coordenada del boton respecto al formulario, esquina superior izqueirda respecto al formulario +
+                //Coordenadas del propio botón que empiezan en 0,0
+                //El tostring() se hace a la suma total
+                this.Text = "X: " + (((Control)sender).Location.X + e.Location.X).ToString() + " Y: " + (((Control)sender).Location.Y + e.Location.Y).ToString();
+
+                Debug.WriteLine("Coordenadas del botón X:" + e.Location.X.ToString() + " Y: " + e.Location.Y.ToString());
+                Debug.WriteLine("Coordenadas del botón  respecto al formulario esquina superior izqueirda X:" + ((Control)sender).Location.X + " Y: " + ((Control)sender).Location.Y);
+
 
 
             }
@@ -150,7 +162,7 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES.
                 button1.BackColor = Color.White;
 
             }
-           
+
             else if (e.Button == MouseButtons.Right)
             {
                 button2.BackColor = Color.White;
@@ -163,7 +175,7 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES.
             }
 
 
-            
+
 
         }
 
@@ -179,9 +191,9 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES.
                 e.Cancel = true;
             }
         }
-#if DEFINE
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+#if a
 
             if (e.KeyCode == Keys.Escape)//Key code y key value es lo mismoe xpresado de diferentes maneras
             {
@@ -190,7 +202,8 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES.
             else
             {
 
-                this.Text = e.KeyCode.ToString(); //TECLA PULSADA K,A,F...
+                //KeyValue me da el numero asociado a la tecl
+                this.Text = e.KeyValue.ToString(); //numero de tecla 
 
               
 
@@ -198,11 +211,12 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES.
             
            
 
+#endif 
         }
-#else 
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
+#if b
             if (e.KeyChar == (char)Keys.Escape)//Key code y key value es lo mismoe xpresado de diferentes maneras
             {
                 this.Text = "Mouse Tester";
@@ -215,8 +229,9 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES.
 
 
             }
+#endif
 
         }
-#endif
+
     }
 }
