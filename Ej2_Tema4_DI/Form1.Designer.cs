@@ -66,7 +66,7 @@ namespace Ej2_Tema4_DI
             this.txtR.Name = "txtR";
             this.txtR.Size = new System.Drawing.Size(100, 20);
             this.txtR.TabIndex = 1;
-            this.txtR.MouseEnter += new System.EventHandler(this.CambioDeFoco);
+            this.txtR.Enter += new System.EventHandler(this.btns_Botones_Genericos);
             // 
             // txtG
             // 
@@ -74,7 +74,7 @@ namespace Ej2_Tema4_DI
             this.txtG.Name = "txtG";
             this.txtG.Size = new System.Drawing.Size(100, 20);
             this.txtG.TabIndex = 2;
-            this.txtG.MouseEnter += new System.EventHandler(this.CambioDeFoco);
+            this.txtG.Enter += new System.EventHandler(this.btns_Botones_Genericos);
             // 
             // txtB
             // 
@@ -82,7 +82,7 @@ namespace Ej2_Tema4_DI
             this.txtB.Name = "txtB";
             this.txtB.Size = new System.Drawing.Size(100, 20);
             this.txtB.TabIndex = 3;
-            this.txtB.MouseEnter += new System.EventHandler(this.CambioDeFoco);
+            this.txtB.Enter += new System.EventHandler(this.btns_Botones_Genericos);
             // 
             // btnCambiarColor
             // 
@@ -147,7 +147,7 @@ namespace Ej2_Tema4_DI
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(504, 20);
             this.txtPath.TabIndex = 9;
-            this.txtPath.MouseEnter += new System.EventHandler(this.CambioDeFoco);
+            this.txtPath.Enter += new System.EventHandler(this.btns_Botones_Genericos);
             // 
             // btnImagen
             // 

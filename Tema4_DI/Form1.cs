@@ -1,4 +1,4 @@
-﻿#define b
+﻿//#define A
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,16 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//Pendiente de VALIDACIÓN + correcciones acabadas
 
-namespace Tema4_DI// rEVISAR COOR EN BOTONES---Listo
-                  // Liberación botones---listo 
-                  // Eventos de teclado para Unicode---listo
+//VALIDADO
+
+
+namespace Tema4_DI
 {
 
 
 
-
+    // rEVISAR COOR EN BOTONES---Listo
+    // Liberación botones---listo 
+    // Eventos de teclado para Unicode---listo
     //    Icono
     //    título 
     //    Orden de tabulación
@@ -193,7 +195,7 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES---Listo
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-#if a
+#if A
 
             if (e.KeyCode == Keys.Escape)//Key code y key value es lo mismoe xpresado de diferentes maneras
             {
@@ -216,7 +218,7 @@ namespace Tema4_DI// rEVISAR COOR EN BOTONES---Listo
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-#if b
+#if !A
             if (e.KeyChar == (char)Keys.Escape)//Key code y key value es lo mismoe xpresado de diferentes maneras
             {
                 this.Text = "Mouse Tester";

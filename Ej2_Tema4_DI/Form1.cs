@@ -11,9 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ej2_Tema4_DI
+//VALIDADO
+
+
+//TODO---> Gestion acceptButton--->Con enter; tiene lugar cuando el control se convierte
+//en el componente activo del formulario
+namespace Ej2_Tema4_DI  //GESTIÓN ACCCEPTBUTTON. Pasae mensaje a negro si no hay error.
+
 {
-    //Pendiente de VALIDACIÓN
 
 
 
@@ -30,7 +35,7 @@ namespace Ej2_Tema4_DI
         public Form1()
         {
             InitializeComponent();
-            colorfondo=this.BackColor;
+            colorfondo = this.BackColor;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -51,13 +56,12 @@ namespace Ej2_Tema4_DI
 
         private void btnImagen_Click(object sender, EventArgs e)
         {
-            //No cumple especificación
-            //de fondo en una label
+            
             //C:\Users\Cris\Downloads\foto.jpg
 
 
-            lblImage.Text = "";
-            lblImage.Visible = true;
+            lblInformativa.Text = "";
+            lblInformativa.Visible = true;
             try
             {
                 //Directivas de compolación apra hacer un reescalado de imagen manual 
@@ -72,22 +76,23 @@ namespace Ej2_Tema4_DI
                 //lblImage.Size = new Size(1366, 768);
 #endif
                 lblImage.Image = imagen;//Image.FromFile(txtPath.Text);
-                Debug.WriteLine("Entra en el try");
+
+                lblInformativa.Text = "";
             }
             catch (FileNotFoundException)
             {
                 //this.Size = new Size(900, 300);
-                lblImage.Visible = false;
-                lblImage.ForeColor = Color.Red;
-                lblImage.Text = "No se ha podido encontrar la ruta de la imagen";
+
+                lblInformativa.ForeColor = Color.Red;
+                lblInformativa.Text = "No se ha podido encontrar la ruta de la imagen";
 
             }
             catch (ArgumentException)
             {
                 // this.Size = new Size(900, 300);
-                lblImage.Visible = false;
-                lblImage.ForeColor = Color.Red;
-                lblImage.Text = "No se ha podido encontrar la ruta de la imagen";
+
+                lblInformativa.ForeColor = Color.Red;
+                lblInformativa.Text = "No se ha podido encontrar la ruta de la imagen";
             }
             //this.Size = new System.Drawing.Size(1366,768);//ajusto el tamaño a la imagen
             // this.BackgroundImage = new Bitmap(txtPath.Text); //Con doble carácter de escape
@@ -119,7 +124,8 @@ namespace Ej2_Tema4_DI
         private void btnCambiarColor_Click(object sender, EventArgs e)
         {
 
-           // if()
+
+            lblInformativa.ForeColor = Color.Black;
             lblInformativa.Text = "Introduce en cada textbox números entre 0-255 ,corresponden a colores.";
 
             if (int.TryParse(txtR.Text, out r) && int.TryParse(txtG.Text, out g) && int.TryParse(txtB.Text, out b)) //con independiencia de si devuelve true o false out contiene la cadena
@@ -134,9 +140,9 @@ namespace Ej2_Tema4_DI
             else
             {
 
-                this.BackColor = Color.White;
+                this.BackColor = colorfondo;
                 lblInformativa.ForeColor = Color.Red;
-                lblInformativa.Text = "No se ha podido cambiar el color de fondo, los datos contenidos en los campos tipos text están erróneos.\nSe ha cambiado el color de fondo a blanco.";
+                lblInformativa.Text = "No se ha podido cambiar el color de fondo, los datos contenidos en los campos tipos text están erróneos.";
             }
 
 
@@ -144,36 +150,21 @@ namespace Ej2_Tema4_DI
 
         private void MouseEnterBotones(object sender, EventArgs e)
         {
-           
-                ((Button)sender).BackColor = Color.Turquoise;
 
-            
+            ((Button)sender).BackColor = Color.Turquoise;
+
+
         }
 
         private void MouseLeaveBotones(object sender, EventArgs e)
         {
-          
-                ((Button)sender).BackColor = Color.White;
 
-            
+            ((Button)sender).BackColor = colorfondo;
 
 
         }
 
-        public bool ComprobarRangos(int rgb)
-        {
-            if (rgb >= 0 && rgb <= 255)
-            {
-                return true;
-
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public void CambioDeFoco(object sender, EventArgs a)
+        private void btns_Botones_Genericos(object sender, EventArgs e)
         {
             if (sender == txtPath)//compruebo direcciones de memoria
             {
@@ -181,11 +172,27 @@ namespace Ej2_Tema4_DI
 
             }
 
-            else if (sender == txtB || sender == txtG || sender == txtR)
+            //Sobreescritura del operador or o no se puede hacer (txtg||txtb||txtr)
+            else if (sender == txtB || sender == txtG || sender == txtR) //(true<c) tipo de dato y comparacion
             {
 
                 this.AcceptButton = btnCambiarColor;
             }
+        }
+
+        public bool ComprobarRangos(int rgb)
+        {
+            //if (rgb >= 0 && rgb <= 255)
+            //{
+            //    return true;
+
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+
+            return rgb >= 0 && rgb <= 255; //ya devuelve tru o false
         }
     }
 }
