@@ -49,6 +49,7 @@ namespace Ej4_Tema4_DI
 
         }
 
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             //formato con dos cifras

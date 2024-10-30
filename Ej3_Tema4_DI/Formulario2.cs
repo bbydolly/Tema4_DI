@@ -16,6 +16,7 @@ namespace Ej3_Tema4_DI
         public Formulario2(string nombreArchivo)
         {
             InitializeComponent();
+
             this.Text = nombreArchivo;
         }
 
