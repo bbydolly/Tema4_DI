@@ -13,6 +13,11 @@ namespace Ej5_Tema4_DI
 {
     public partial class Form1 : Form
     {
+
+        public static string titulo = "Formulario animadoooo";
+        public int cont = titulo.Length-1;
+        string aux = "";
+        bool flag = true;
         public Form1()
         {
             InitializeComponent();
@@ -30,34 +35,116 @@ namespace Ej5_Tema4_DI
                 }
 
             }
+            lbElementos.Text = String.Format("Hay {0} elementos en la lista 1", lb1.Count.ToString());
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
             ListBox.ObjectCollection lb1 = listBox1.Items;
             ListBox.SelectedObjectCollection elementosSeleccionados = listBox1.SelectedItems;
-            //Me quita de uno en uno 
-            Debug.WriteLine("elementos seleccionados " + elementosSeleccionados.Count);
 
-            //TODO revisar eliminacion de la lista
-            for (int i = elementosSeleccionados.Count; i
-                
-                > 0; i--)
+            //Eliminar elementos de la coleccion count-1 o lenght-1
+            for (int i = elementosSeleccionados.Count - 1; i >= 0; i--)
             {
-                if (lb1.Contains(elementosSeleccionados[i]))
-                {
-                    Debug.WriteLine("true");
-                    lb1.Remove(elementosSeleccionados[i]);//elimino el elemento que coincide
-                }
+                Debug.WriteLine("true");
+                lb1.Remove(elementosSeleccionados[i]);//elimino el elemento que coincide
+
+            }
+            lbElementos.Text = String.Format("Hay {0} elementos en la lista 1", lb1.Count.ToString());
+
+        }
+
+        private void btnTraspasarDerecha_Click(object sender, EventArgs e)
+        {
+            ListBox.ObjectCollection lb1 = listBox1.Items;
+            ListBox.SelectedObjectCollection elementosSeleccionados = listBox1.SelectedItems;
+
+            //Traspaso los elementos en el mismo orden
+            for (int i = 0; i < elementosSeleccionados.Count; i++)
+            {
+                Debug.Write("añado a lb2-->" + elementosSeleccionados[i].ToString());
+                listBox2.Items.Add(elementosSeleccionados[i]);
+
             }
 
+            //Elimino los elementos traspasados
+            for (int i = elementosSeleccionados.Count - 1; i >= 0; i--)
+            {
+                Debug.WriteLine("true");
+                lb1.Remove(elementosSeleccionados[i]);//elimino el elemento que coincide
 
-            //ListBox.SelectedIndexCollection elementosSeleccionados = listBox1.SelectedIndices; //elementos seleccionados
-            //for (int i = 0; i < elementosSeleccionados.Count; i++)
-            //{
-            //   // lb1.Remove(listBox1.ite(elementosSeleccionados[i]));
-            //   lb1.
-            //}
+            }
+            lbElementos.Text = String.Format("Hay {0} elementos en la lista 1", lb1.Count.ToString());
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Está perfecto
+            lbIndex.Text = "Índices seleccionados:\r\n";
+            ListBox.SelectedIndexCollection seleccionados = listBox1.SelectedIndices;
+            for (int i = 0; i < seleccionados.Count; i++)
+            {
+                lbIndex.Text += seleccionados[i] + " , ";
+
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                //Como recursos
+                this.Icon = new Icon("C:\\Users\\Cris\\Downloads\\rayquaza.ico");
+                flag = false;
+            }
+            else
+            {
+                this.Icon = new Icon("C:\\Users\\Cris\\Downloads\\giratina.ico");
+                flag = true;
+            }
+           
+
+            if (cont <= titulo.Length-1 && cont>=0)
+            {
+
+                Debug.Write("titulo " + titulo[cont]);
+                this.Text = titulo.Substring(cont);//hago el substring desde la posicio del contador hasta el final de la cadena 
+
+                cont--;
+            }
+            else
+            {
+                cont = titulo.Length - 1;
+            }
+            
+
+        }
+
+        private void btnTraspasarIzquierda_Click(object sender, EventArgs e)
+        {
+            //No funciona traspasar 
+            ListBox.ObjectCollection lb1 = listBox1.Items;
+
+            ListBox.ObjectCollection lb2 = listBox2.Items;
+            ListBox.SelectedObjectCollection elementosSeleccionados = listBox2.SelectedItems;
+
+            //Traspaso los elementos en el mismo orden
+            for (int i = 0; i < elementosSeleccionados.Count; i++)
+            {
+                Debug.Write("añado a lb2-->" + elementosSeleccionados[i].ToString());
+                listBox1.Items.Add(elementosSeleccionados[i]);
+
+            }
+
+            //Elimino los elementos traspasados
+            for (int i = elementosSeleccionados.Count - 1; i >= 0; i--)
+            {
+                Debug.WriteLine("true");
+                lb2.Remove(elementosSeleccionados[i]);//elimino el elemento que coincide
+
+            }
+            lbElementos.Text = String.Format("Hay {0} elementos en la lista 1", lb1.Count.ToString());
         }
     }
 }

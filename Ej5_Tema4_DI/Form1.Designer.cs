@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.btnAbhadir = new System.Windows.Forms.Button();
@@ -35,8 +36,10 @@
             this.btnTraspasarDerecha = new System.Windows.Forms.Button();
             this.btnTraspasarIzquierda = new System.Windows.Forms.Button();
             this.lblTexto = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbElementos = new System.Windows.Forms.Label();
             this.txtDato = new System.Windows.Forms.TextBox();
+            this.lbIndex = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // listBox1
@@ -47,12 +50,14 @@
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox1.Size = new System.Drawing.Size(206, 381);
             this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.Location = new System.Drawing.Point(255, 26);
             this.listBox2.Name = "listBox2";
+            this.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox2.Size = new System.Drawing.Size(226, 381);
             this.listBox2.TabIndex = 1;
             // 
@@ -84,6 +89,7 @@
             this.btnTraspasarDerecha.TabIndex = 4;
             this.btnTraspasarDerecha.Text = "Traspasar  (-->)";
             this.btnTraspasarDerecha.UseVisualStyleBackColor = true;
+            this.btnTraspasarDerecha.Click += new System.EventHandler(this.btnTraspasarDerecha_Click);
             // 
             // btnTraspasarIzquierda
             // 
@@ -93,6 +99,7 @@
             this.btnTraspasarIzquierda.TabIndex = 5;
             this.btnTraspasarIzquierda.Text = "Traspasar    (<--)";
             this.btnTraspasarIzquierda.UseVisualStyleBackColor = true;
+            this.btnTraspasarIzquierda.Click += new System.EventHandler(this.btnTraspasarIzquierda_Click);
             // 
             // lblTexto
             // 
@@ -103,14 +110,14 @@
             this.lblTexto.TabIndex = 6;
             this.lblTexto.Text = "Texto: ";
             // 
-            // label2
+            // lbElementos
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(516, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "label2";
+            this.lbElementos.AutoSize = true;
+            this.lbElementos.Location = new System.Drawing.Point(516, 71);
+            this.lbElementos.Name = "lbElementos";
+            this.lbElementos.Size = new System.Drawing.Size(148, 13);
+            this.lbElementos.TabIndex = 7;
+            this.lbElementos.Text = "Elementos en la lista principal:";
             // 
             // txtDato
             // 
@@ -119,14 +126,30 @@
             this.txtDato.Size = new System.Drawing.Size(231, 20);
             this.txtDato.TabIndex = 8;
             // 
+            // lbIndex
+            // 
+            this.lbIndex.AutoSize = true;
+            this.lbIndex.Location = new System.Drawing.Point(516, 108);
+            this.lbIndex.Name = "lbIndex";
+            this.lbIndex.Size = new System.Drawing.Size(115, 13);
+            this.lbIndex.TabIndex = 9;
+            this.lbIndex.Text = "Índices seleccionados:";
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 200;
+            this.timer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AcceptButton = this.btnAbhadir;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbIndex);
             this.Controls.Add(this.txtDato);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbElementos);
             this.Controls.Add(this.lblTexto);
             this.Controls.Add(this.btnTraspasarIzquierda);
             this.Controls.Add(this.btnTraspasarDerecha);
@@ -135,7 +158,6 @@
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,8 +172,10 @@
         private System.Windows.Forms.Button btnTraspasarDerecha;
         private System.Windows.Forms.Button btnTraspasarIzquierda;
         private System.Windows.Forms.Label lblTexto;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbElementos;
         private System.Windows.Forms.TextBox txtDato;
+        private System.Windows.Forms.Label lbIndex;
+        private System.Windows.Forms.Timer timer;
     }
 }
 
