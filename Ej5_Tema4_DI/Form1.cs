@@ -15,7 +15,7 @@ namespace Ej5_Tema4_DI
     {
 
         public static string titulo = "Formulario animadoooo";
-        public int cont = titulo.Length-1;
+        public int cont = titulo.Length - 1;
         string aux = "";
         bool flag = true;
         public Form1()
@@ -94,18 +94,24 @@ namespace Ej5_Tema4_DI
         {
             if (flag)
             {
+                //Con ruta
+                // this.Icon = new Icon("C:\\Users\\Cris\\Downloads\\rayquaza.ico");
                 //Como recursos
-                this.Icon = new Icon("C:\\Users\\Cris\\Downloads\\rayquaza.ico");
+                /*Para agregar un recurso, sobre Properties agregar archivo, Rec y ya sale, poner el tipo de recurso, seleccionar el archivo
+                 y cabiar la configuración */
+                this.Icon = Properties.ResourceImagenes.rayquaza;
                 flag = false;
             }
             else
             {
-                this.Icon = new Icon("C:\\Users\\Cris\\Downloads\\giratina.ico");
+                //Como recurso la imagen
+                this.Icon = Properties.ResourceImagenes.giratina;
+                // this.Icon = new Icon("C:\\Users\\Cris\\Downloads\\giratina.ico");
                 flag = true;
             }
-           
 
-            if (cont <= titulo.Length-1 && cont>=0)
+
+            if (cont <= titulo.Length - 1 && cont >= 0)
             {
 
                 Debug.Write("titulo " + titulo[cont]);
@@ -117,7 +123,7 @@ namespace Ej5_Tema4_DI
             {
                 cont = titulo.Length - 1;
             }
-            
+
 
         }
 
