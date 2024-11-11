@@ -21,6 +21,7 @@ namespace Ej5_Tema4_DI
         public Form1()
         {
             InitializeComponent();
+            toolTip2.SetToolTip(this.listBox2,"Cantidad de elementos en la list box 2: "+listBox2.Items.Count.ToString());
         }
 
         private void btnAbhadir_Click(object sender, EventArgs e)
@@ -46,7 +47,7 @@ namespace Ej5_Tema4_DI
             //Eliminar elementos de la coleccion count-1 o lenght-1
             for (int i = elementosSeleccionados.Count - 1; i >= 0; i--)
             {
-                Debug.WriteLine("true");
+               // Debug.WriteLine("true");
                 lb1.Remove(elementosSeleccionados[i]);//elimino el elemento que coincide
 
             }
@@ -62,7 +63,7 @@ namespace Ej5_Tema4_DI
             //Traspaso los elementos en el mismo orden
             for (int i = 0; i < elementosSeleccionados.Count; i++)
             {
-                Debug.Write("añado a lb2-->" + elementosSeleccionados[i].ToString());
+              //  Debug.Write("añado a lb2-->" + elementosSeleccionados[i].ToString());
                 listBox2.Items.Add(elementosSeleccionados[i]);
 
             }
@@ -70,11 +71,14 @@ namespace Ej5_Tema4_DI
             //Elimino los elementos traspasados
             for (int i = elementosSeleccionados.Count - 1; i >= 0; i--)
             {
-                Debug.WriteLine("true");
+               // Debug.WriteLine("true");
                 lb1.Remove(elementosSeleccionados[i]);//elimino el elemento que coincide
 
             }
             lbElementos.Text = String.Format("Hay {0} elementos en la lista 1", lb1.Count.ToString());
+
+           // Debug.WriteLine("Cantidad de elementos en listbox2: " + listBox2.Items.Count.ToString());
+            toolTip2.SetToolTip(this.listBox2, "Cantidad de elementos en la list box: " + listBox2.Items.Count.ToString()+ " elementos.");
 
         }
 
@@ -104,7 +108,7 @@ namespace Ej5_Tema4_DI
             }
             else
             {
-                //Como recurso la imagen
+                //Como recursos los iconos
                 this.Icon = Properties.ResourceImagenes.giratina;
                 // this.Icon = new Icon("C:\\Users\\Cris\\Downloads\\giratina.ico");
                 flag = true;
@@ -114,7 +118,7 @@ namespace Ej5_Tema4_DI
             if (cont <= titulo.Length - 1 && cont >= 0)
             {
 
-                Debug.Write("titulo " + titulo[cont]);
+               // Debug.Write("titulo " + titulo[cont]);
                 this.Text = titulo.Substring(cont);//hago el substring desde la posicio del contador hasta el final de la cadena 
 
                 cont--;
@@ -151,6 +155,9 @@ namespace Ej5_Tema4_DI
 
             }
             lbElementos.Text = String.Format("Hay {0} elementos en la lista 1", lb1.Count.ToString());
+           
         }
+
+      
     }
 }

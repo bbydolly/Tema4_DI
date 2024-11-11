@@ -40,6 +40,13 @@
             this.txtDato = new System.Windows.Forms.TextBox();
             this.lbIndex = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip7 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // listBox1
@@ -50,6 +57,7 @@
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox1.Size = new System.Drawing.Size(206, 381);
             this.listBox1.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.listBox1, "Representa una lista de elementos que se han añadido a la colección.");
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // listBox2
@@ -68,6 +76,7 @@
             this.btnAbhadir.Size = new System.Drawing.Size(110, 23);
             this.btnAbhadir.TabIndex = 2;
             this.btnAbhadir.Text = "Añadir";
+            this.toolTip4.SetToolTip(this.btnAbhadir, "Botón que añade el texto que haya en el textBoz a la lista uno.");
             this.btnAbhadir.UseVisualStyleBackColor = true;
             this.btnAbhadir.Click += new System.EventHandler(this.btnAbhadir_Click);
             // 
@@ -78,6 +87,8 @@
             this.btnQuitar.Size = new System.Drawing.Size(110, 23);
             this.btnQuitar.TabIndex = 3;
             this.btnQuitar.Text = "Quitar";
+            this.toolTip5.SetToolTip(this.btnQuitar, "Botón que elimina un item seleccionado de la lista uno(la de la izquierda).Si no " +
+        "hay ningún elemento seleccionado no elimina nada.");
             this.btnQuitar.UseVisualStyleBackColor = true;
             this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
@@ -88,6 +99,8 @@
             this.btnTraspasarDerecha.Size = new System.Drawing.Size(110, 23);
             this.btnTraspasarDerecha.TabIndex = 4;
             this.btnTraspasarDerecha.Text = "Traspasar  (-->)";
+            this.toolTip6.SetToolTip(this.btnTraspasarDerecha, "Si hay un elemento seleccionado en la primera listBox(la de la izquierda) y tras " +
+        "pulsarlo, se elimina ese elemento de la lista uno y lo traspasa a la lista 2.");
             this.btnTraspasarDerecha.UseVisualStyleBackColor = true;
             this.btnTraspasarDerecha.Click += new System.EventHandler(this.btnTraspasarDerecha_Click);
             // 
@@ -98,6 +111,8 @@
             this.btnTraspasarIzquierda.Size = new System.Drawing.Size(110, 23);
             this.btnTraspasarIzquierda.TabIndex = 5;
             this.btnTraspasarIzquierda.Text = "Traspasar    (<--)";
+            this.toolTip7.SetToolTip(this.btnTraspasarIzquierda, "Si hay un elemento seleccionado en la lista 2 lo borra de la lista 2 y lo escribe" +
+        " en la lista 1. Hace un traspaso.");
             this.btnTraspasarIzquierda.UseVisualStyleBackColor = true;
             this.btnTraspasarIzquierda.Click += new System.EventHandler(this.btnTraspasarIzquierda_Click);
             // 
@@ -125,6 +140,8 @@
             this.txtDato.Name = "txtDato";
             this.txtDato.Size = new System.Drawing.Size(231, 20);
             this.txtDato.TabIndex = 8;
+            this.toolTip3.SetToolTip(this.txtDato, "TextBox para escribir lo que se añadirá a la colección de la izquierda. Funciona " +
+        "dándole a enter tras escribir o dándole a añadir. ");
             // 
             // lbIndex
             // 
@@ -140,6 +157,10 @@
             this.timer.Enabled = true;
             this.timer.Interval = 200;
             this.timer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // toolTip2
+            // 
+          
             // 
             // Form1
             // 
@@ -176,6 +197,13 @@
         private System.Windows.Forms.TextBox txtDato;
         private System.Windows.Forms.Label lbIndex;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTip3;
+        private System.Windows.Forms.ToolTip toolTip4;
+        private System.Windows.Forms.ToolTip toolTip5;
+        private System.Windows.Forms.ToolTip toolTip6;
+        private System.Windows.Forms.ToolTip toolTip7;
     }
 }
 
