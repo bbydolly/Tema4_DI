@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace Ej4_Tema4_DI
 {
+
+    //Pendiente de VALIDACIÓN
+
     public partial class Form1 : Form
     {
         public delegate int Operar(int n1, int n2);
