@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.acerdaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grabarNúmeroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acerdaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,12 +61,6 @@
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
-            // acerdaDeToolStripMenuItem
-            // 
-            this.acerdaDeToolStripMenuItem.Name = "acerdaDeToolStripMenuItem";
-            this.acerdaDeToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.acerdaDeToolStripMenuItem.Text = "Acerda de...";
-            // 
             // grabarNúmeroToolStripMenuItem
             // 
             this.grabarNúmeroToolStripMenuItem.Name = "grabarNúmeroToolStripMenuItem";
@@ -79,6 +73,7 @@
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
             this.resetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.resetToolStripMenuItem.Text = "Reset";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.btn_Reset);
             // 
             // toolStripSeparator1
             // 
@@ -90,6 +85,14 @@
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
+            // acerdaDeToolStripMenuItem
+            // 
+            this.acerdaDeToolStripMenuItem.Name = "acerdaDeToolStripMenuItem";
+            this.acerdaDeToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.acerdaDeToolStripMenuItem.Text = "Acerda de...";
+            this.acerdaDeToolStripMenuItem.Click += new System.EventHandler(this.acerdaDeToolStripMenuItem_Click);
             // 
             // Form1
             // 
