@@ -98,16 +98,20 @@ namespace Ej2_tema3_DI
 
         public void rellenarNotas()
         {
+            int cont = 0;
             //Defino el tamaño de la matriz
             Notas = new int[NombresAlumnos.Length, 4];
+            Debug.WriteLine("NombresAlumnos.Lenght---->"+NombresAlumnos.Length);
 
             for (int i = 0; i < Notas.GetLength(0); i++)//filas
             {
+              
                 for (int j = 0; j < 4; j++)//columnas
                 {
                     Notas[i, j] = x.Next(0, 11);//inicialización del valor
-                                                
+                    Debug.Write(Notas[i, j]+" ");
                 }
+                Debug.WriteLine("");
               
 
 

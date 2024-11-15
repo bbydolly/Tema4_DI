@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace Ej3_Tema4_DI
 {
 
-    //Pendiente de VALIDACIÓN
+    //VALIDADO
 
 
 
@@ -33,7 +33,7 @@ namespace Ej3_Tema4_DI
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             // Se puede declarar aquí o por código en el designer 
             {
-                openFileDialog.InitialDirectory = "C:\\Users\\Cris\\Pictures";
+                openFileDialog.InitialDirectory = "C:\\Users\\Cris\\Pictures";//Variables de entorno
                 openFileDialog.Filter = "txt files |*.txt|PNG|*.png|JPG|*.jpg|All files (*.*) |*.*";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
