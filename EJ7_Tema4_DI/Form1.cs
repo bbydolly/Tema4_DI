@@ -123,10 +123,11 @@ namespace EJ7_Tema4_DI
                     }
                     lb = new Label();
                     lb.Name = "lbInfo";
-                    lb.Text = "Media de toda la tabla: " + aula.CalcularMedias().ToString();
+                    lb.Text = "Media de toda la tabla: " + aula.CalcularMedias();
+                    Debug.WriteLine(aula.CalcularMedias());
                     lb.Font = new Font("Arial", 10, FontStyle.Regular);
                     tt.SetToolTip(lb, "Media de la asignatura: ");//+media de notas del alumno seleccionado y media de notas de una asignatura
-                    lb.Size = new Size(90, 20);
+                    lb.Size = new Size(290, 20);
                     lb.Location = new System.Drawing.Point(30, 410);
                     Controls.Add(lb);
 
@@ -167,7 +168,7 @@ namespace EJ7_Tema4_DI
 
         public void MouseLeave(object c, EventArgs a)
         {
-            ((Label)c).BackColor = Color.Wheat;
+            ((Label)c).BackColor = Label.DefaultBackColor;
         }
 
         public void SelectedIndexChanged(object c, EventArgs e)
