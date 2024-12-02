@@ -11,8 +11,7 @@ using System.Windows.Forms;
 
 namespace Ej4_Tema4_DI
 {
-
-    //Pendiente de VALIDACIÓN
+  //  Validado
 
     public partial class Form1 : Form
     {
@@ -74,28 +73,31 @@ namespace Ej4_Tema4_DI
             {
                 Debug.WriteLine("Entra en el if");
                 Control.ControlCollection coleccion = this.Controls;
+                Debug.WriteLine(lblOperacion.Text);
 
-                foreach (Control c in coleccion)
-                {
-                    if (c is RadioButton)
-                    {
-                        if (((RadioButton)c).Checked)
-                        {
-                            rb = (RadioButton)c;
+                lblIgual.Text += simbolosOperaciones[lblOperacion.Text](num, num2);
+
+                //foreach (Control c in coleccion)//SIn bucles (accediendo direcamente a la jhas con clave text de la etiqueta
+                //{
+                //    if (c is RadioButton)
+                //    {
+                //        if (((RadioButton)c).Checked)
+                //        {
+                //            rb = (RadioButton)c;
 
 
-                            foreach (KeyValuePair<string, Operar> operacion in simbolosOperaciones)
-                            {
-                                if (operacion.Key == rb.Text)
-                                {
-                                    Debug.WriteLine("Entra en el if key");
-                                    lblIgual.Text += "  " + (operacion.Value(num, num2)).ToString();
-                                }
+                //            foreach (KeyValuePair<string, Operar> operacion in simbolosOperaciones)
+                //            {
+                //                if (operacion.Key == rb.Text)
+                //                {
+                //                    Debug.WriteLine("Entra en el if key");
+                //                    lblIgual.Text += "  " + (operacion.Value(num, num2)).ToString();
+                //                }
 
-                            }
-                        }
-                    }
-                }
+                //            }
+                //        }
+                //    }
+                //}
             }
         }
 
