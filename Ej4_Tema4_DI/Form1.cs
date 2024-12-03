@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Ej4_Tema4_DI
 {
-  //  Validado
+  //Validado
 
     public partial class Form1 : Form
     {

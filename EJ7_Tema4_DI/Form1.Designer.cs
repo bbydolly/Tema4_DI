@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.cbAlumnos = new System.Windows.Forms.ComboBox();
             this.cbAsignaturas = new System.Windows.Forms.ComboBox();
+            this.lbAlumno = new System.Windows.Forms.Label();
+            this.lbMediaNotas = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cbAlumnos
@@ -39,6 +42,7 @@
             this.cbAlumnos.Name = "cbAlumnos";
             this.cbAlumnos.Size = new System.Drawing.Size(121, 21);
             this.cbAlumnos.TabIndex = 0;
+            this.cbAlumnos.SelectedIndexChanged += new System.EventHandler(this.cbAlumnos_SelectedIndexChanged);
             // 
             // cbAsignaturas
             // 
@@ -47,17 +51,38 @@
             this.cbAsignaturas.Name = "cbAsignaturas";
             this.cbAsignaturas.Size = new System.Drawing.Size(121, 21);
             this.cbAsignaturas.TabIndex = 1;
+            this.cbAsignaturas.SelectedIndexChanged += new System.EventHandler(this.cbAsignaturas_SelectedIndexChanged);
+            // 
+            // lbAlumno
+            // 
+            this.lbAlumno.AutoSize = true;
+            this.lbAlumno.Location = new System.Drawing.Point(578, 34);
+            this.lbAlumno.Name = "lbAlumno";
+            this.lbAlumno.Size = new System.Drawing.Size(0, 13);
+            this.lbAlumno.TabIndex = 2;
+            // 
+            // lbMediaNotas
+            // 
+            this.lbMediaNotas.AutoSize = true;
+            this.lbMediaNotas.Location = new System.Drawing.Point(578, 66);
+            this.lbMediaNotas.Name = "lbMediaNotas";
+            this.lbMediaNotas.Size = new System.Drawing.Size(0, 13);
+            this.lbMediaNotas.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbMediaNotas);
+            this.Controls.Add(this.lbAlumno);
             this.Controls.Add(this.cbAsignaturas);
             this.Controls.Add(this.cbAlumnos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Gestor de notas";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -65,6 +90,8 @@
 
         private System.Windows.Forms.ComboBox cbAlumnos;
         private System.Windows.Forms.ComboBox cbAsignaturas;
+        private System.Windows.Forms.Label lbAlumno;
+        private System.Windows.Forms.Label lbMediaNotas;
     }
 }
 

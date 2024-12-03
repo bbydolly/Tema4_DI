@@ -13,10 +13,14 @@ using System.Windows.Forms;
 
 namespace EJ7_Tema4_DI
 {
+
+
+    //Pendiente de Valdiación 
     public partial class Form1 : Form
     {
         string ruta = "C:\\Users\\Cris\\Desktop\\nombres.txt";
         string names;
+        public int[,] notas;
         public Form1()
         {
             InitializeComponent();
@@ -43,7 +47,7 @@ namespace EJ7_Tema4_DI
                         foreach (string s in nAlumnos)
                         {
                             cbAlumnos.Items.Add(s);
-                            cbAlumnos.SelectedIndexChanged += SelectedIndexChanged;
+                            //cbAlumnos.SelectedIndexChanged += SelectedIndexChanged;
 
                             //Labels nombres alumnos
                             lb = new Label();
@@ -77,7 +81,7 @@ namespace EJ7_Tema4_DI
                     //La tabla se mantiene siempre con nombres, asignaturas y las
                     //notas
                     aula.rellenarNotas();
-                    int[,] notas = aula.Notas;
+                    notas = aula.Notas;
 
 
                     x = 150;
@@ -171,10 +175,37 @@ namespace EJ7_Tema4_DI
             ((Label)c).BackColor = Label.DefaultBackColor;
         }
 
-        public void SelectedIndexChanged(object c, EventArgs e)
+
+
+        private void cbAlumnos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = ((ComboBox)c).SelectedIndex;
-            //TODO recorrer la coleccion de controles buscando el combo para cger el indice que se ha seleccionado 
+            double acu = 0;
+            for (int i = 0; i < notas.GetLength(0); i++)
+            {
+                for (int j = 0; j < notas.GetLength(1); j++)
+                {
+
+                    acu += notas[cbAlumnos.SelectedIndex, j];
+                }
+
+            }
+            // lbAlumno.Font= new Font("Arial", 10, FontStyle.Regular);
+            lbAlumno.Text = "Media de las notas de " + cbAlumnos.SelectedItem + " es " + (acu / notas.Length).ToString();
+
+        }
+
+        private void cbAsignaturas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            double acu = 0;
+            for (int i = 0; i < notas.GetLength(0); i++)
+            {
+
+                acu += notas[i, cbAsignaturas.SelectedIndex];
+
+
+            }
+            // lbMediaNotas.Font= new Font("Arial", 10, FontStyle.Regular);
+            lbMediaNotas.Text = "Media de la asignatura de " + cbAsignaturas.SelectedItem + " es " + (acu / notas.GetLength(0)).ToString();
         }
     }
 }
