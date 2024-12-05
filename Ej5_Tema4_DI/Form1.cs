@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Ej5_Tema4_DI
 {
-    //Pendiente de VALIDACIÓN
+    //VALIDACIÓN
 
     public partial class Form1 : Form
     {

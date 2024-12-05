@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ej6_Tema4_DI
+    //Correcciones hechas
+//Permitir cancelación,
+//AcceptButton en pin, navegación ALT y atajos en menú, 
 {
 
     //Pendiente de VALIDACIÓN
@@ -19,7 +22,7 @@ namespace Ej6_Tema4_DI
     public partial class Form1 : Form
     {
         public Button btn;
-        public string[] caracteres = { "*", "0", "#" };
+        public string caracteres = "*0#";// = { "*", "0", "#" };
         public int x;
         public int y;
         public Form2 f2;
@@ -68,8 +71,8 @@ namespace Ej6_Tema4_DI
             for (int i = 0; i < caracteres.Length; i++)
             {
                 btn = new Button();
-                btn.Name = caracteres[i];
-                btn.Text = caracteres[i];
+                btn.Name = caracteres[i].ToString();
+                btn.Text = caracteres[i].ToString();
                 btn.Size = new System.Drawing.Size(30, 30);
                 btn.Location = new System.Drawing.Point(x, y);
                 btn.Click += new System.EventHandler(btn_Click);
@@ -133,7 +136,8 @@ namespace Ej6_Tema4_DI
             while (flag)
             {
                 f2 = new Form2();
-
+                //f2.AcceptButton = btnContraseña;
+                // f2.FormClosing += new System.Windows.Forms.FormClosingEventHandler(f2.Form2_FormClosing);
                 res = f2.ShowDialog();
 
                 switch (res)
@@ -167,7 +171,15 @@ namespace Ej6_Tema4_DI
                             }
                         }
                         break;
-
+                        //Cómo hago correctamente el cierre del formulario?
+                        //Cancel button como lo pongo?
+                        case DialogResult.Cancel:
+                        flag = false;
+                        
+                        f2.Close();
+                        this.Close ();
+                    
+                        break;
 
                 }
             }
@@ -228,6 +240,11 @@ namespace Ej6_Tema4_DI
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
 
         //private void Form1_FormClosing(object sender, FormClosingEventArgs e)
