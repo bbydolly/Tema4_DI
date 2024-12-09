@@ -11,16 +11,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+//Pendiente de VALIDACIÓN, correcciones hechas
+
+//Si dejas los combos editables que sean para hacer búsqueda, si no que no se puedan editar.
+//Ruta absoluta del archivo (debes usar variable de entorno)
+//No debes usar MOuseHover, es MouseEnter
+//Falta info de máximo y mínimo.
+
 namespace EJ7_Tema4_DI
 {
 
+    //Drop down style-->drop down list para no dejar que el usuario seleccione
 
-    //Pendiente de Valdiación 
     public partial class Form1 : Form
     {
-        string ruta = "C:\\Users\\Cris\\Desktop\\nombres.txt";
+        string ruta = Environment.ExpandEnvironmentVariables("%USERPROFILE%") + "\\nombres.txt";
         string names;
         public int[,] notas;
+
         public Form1()
         {
             InitializeComponent();
@@ -110,7 +119,7 @@ namespace EJ7_Tema4_DI
                             lb.Size = new Size(90, 20);
                             lb.Font = new Font("Arial", 10, FontStyle.Regular);
                             lb.Location = new System.Drawing.Point(x, y);
-                            lb.MouseHover += MouseEnter;
+                            lb.MouseEnter += MouseEnter;
                             lb.MouseLeave += MouseLeave;
                             Controls.Add(lb);
                             x += 90;
@@ -189,8 +198,12 @@ namespace EJ7_Tema4_DI
                 }
 
             }
+
             // lbAlumno.Font= new Font("Arial", 10, FontStyle.Regular);
             lbAlumno.Text = "Media de las notas de " + cbAlumnos.SelectedItem + " es " + (acu / notas.Length).ToString();
+            //Nota máxima y mínima 
+
+            NotaMaxMin(cbAlumnos.SelectedIndex);
 
         }
 
@@ -207,5 +220,35 @@ namespace EJ7_Tema4_DI
             // lbMediaNotas.Font= new Font("Arial", 10, FontStyle.Regular);
             lbMediaNotas.Text = "Media de la asignatura de " + cbAsignaturas.SelectedItem + " es " + (acu / notas.GetLength(0)).ToString();
         }
+
+        public void NotaMaxMin(int indexAlumno)
+        {
+            int max = notas[indexAlumno, 0];
+            int min = notas[indexAlumno, 1];
+
+            // int valorMin = 0;
+            //int valorMax = 0;
+
+            for (int i = 0; i < notas.GetLength(0); i++)
+            {
+                for (int j = 0; j < notas.GetLength(1); j++)
+                {
+                    if (max < notas[indexAlumno, j])
+                    {
+                        max = notas[indexAlumno, j];
+                    }
+
+                    if (min > notas[indexAlumno, j])
+                    {
+                        min = notas[indexAlumno, j];
+                    }
+                }
+            }
+            lbAlumno.Text +=  "\r\nNota mínima: " + min + "\r\nNota max: " + max;
+
+
+        }
+
+
     }
 }

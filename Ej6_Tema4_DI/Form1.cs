@@ -10,13 +10,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+//VALIDADO
 namespace Ej6_Tema4_DI
-    //Correcciones hechas
+//Correcciones hechas
 //Permitir cancelación,
 //AcceptButton en pin, navegación ALT y atajos en menú, 
 {
 
-    //Pendiente de VALIDACIÓN
+
 
 
     public partial class Form1 : Form
@@ -171,14 +173,14 @@ namespace Ej6_Tema4_DI
                             }
                         }
                         break;
-                        //Cómo hago correctamente el cierre del formulario?
-                        //Cancel button como lo pongo?
-                        case DialogResult.Cancel:
+                    //Cómo hago correctamente el cierre del formulario?
+                    //Cancel button como lo pongo?
+                    case DialogResult.Cancel:
                         flag = false;
-                        
+
                         f2.Close();
-                        this.Close ();
-                    
+                        this.Close();
+
                         break;
 
                 }

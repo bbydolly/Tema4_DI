@@ -37,6 +37,7 @@
             // 
             // cbAlumnos
             // 
+            this.cbAlumnos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAlumnos.FormattingEnabled = true;
             this.cbAlumnos.Location = new System.Drawing.Point(28, 26);
             this.cbAlumnos.Name = "cbAlumnos";
@@ -46,6 +47,7 @@
             // 
             // cbAsignaturas
             // 
+            this.cbAsignaturas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAsignaturas.FormattingEnabled = true;
             this.cbAsignaturas.Location = new System.Drawing.Point(178, 26);
             this.cbAsignaturas.Name = "cbAsignaturas";
