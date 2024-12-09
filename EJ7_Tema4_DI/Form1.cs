@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-//Pendiente de VALIDACIÓN, correcciones hechas
+//Validado
 
 //Si dejas los combos editables que sean para hacer búsqueda, si no que no se puedan editar.
 //Ruta absoluta del archivo (debes usar variable de entorno)
@@ -25,6 +25,7 @@ namespace EJ7_Tema4_DI
     //Drop down style-->drop down list para no dejar que el usuario seleccione
 
     public partial class Form1 : Form
+        //APPDATA --> Config para el usuario 
     {
         string ruta = Environment.ExpandEnvironmentVariables("%USERPROFILE%") + "\\nombres.txt";
         string names;
