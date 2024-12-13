@@ -24,6 +24,7 @@ namespace Ej8_Tema4_DI
         PictureBox pictureBox;
         //Clase bitmap 
         String[] extensiones = { ".bmp", ".gif", ".exif", ".jpg", ".png", ".tiff"};
+        FileInfo[] archivosExtension;
         public Form1()
         {
             InitializeComponent();
@@ -62,7 +63,7 @@ namespace Ej8_Tema4_DI
 
                 FileInfo[] archivos = directoryInfo.GetFiles();
 
-                FileInfo[] archivosExtension = Array.FindAll(archivos, a => extensiones.Contains(a.Extension));
+                archivosExtension = Array.FindAll(archivos, a => extensiones.Contains(a.Extension));
 
 
                 //try chatch gestion de permisos etc 
