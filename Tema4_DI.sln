@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ej6_Tema4_DI", "Ej6_Tema4_D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EJ7_Tema4_DI", "EJ7_Tema4_DI\EJ7_Tema4_DI.csproj", "{4AD96F29-DFF7-4DAC-B93A-9F5DFD8A9C2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ej8_Tema4_DI", "Ej8_Tema4_DI\Ej8_Tema4_DI.csproj", "{61AFFD2B-9D94-47DB-A6EC-E939910966C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{4AD96F29-DFF7-4DAC-B93A-9F5DFD8A9C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AD96F29-DFF7-4DAC-B93A-9F5DFD8A9C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AD96F29-DFF7-4DAC-B93A-9F5DFD8A9C2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61AFFD2B-9D94-47DB-A6EC-E939910966C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61AFFD2B-9D94-47DB-A6EC-E939910966C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61AFFD2B-9D94-47DB-A6EC-E939910966C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61AFFD2B-9D94-47DB-A6EC-E939910966C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
