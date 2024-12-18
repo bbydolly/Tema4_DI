@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAvance = new System.Windows.Forms.Button();
             this.btnRetroceso = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // button1
@@ -58,7 +61,9 @@
             this.btnAvance.Size = new System.Drawing.Size(75, 23);
             this.btnAvance.TabIndex = 2;
             this.btnAvance.Text = "Avance";
+            this.toolTip1.SetToolTip(this.btnAvance, "Flecha de la derecha (-->)");
             this.btnAvance.UseVisualStyleBackColor = true;
+            this.btnAvance.Click += new System.EventHandler(this.btnAvance_Click);
             // 
             // btnRetroceso
             // 
@@ -67,7 +72,9 @@
             this.btnRetroceso.Size = new System.Drawing.Size(75, 23);
             this.btnRetroceso.TabIndex = 3;
             this.btnRetroceso.Text = "Retroceso";
+            this.toolTip1.SetToolTip(this.btnRetroceso, "Tecla flecha izquierda (<--)");
             this.btnRetroceso.UseVisualStyleBackColor = true;
+            this.btnRetroceso.Click += new System.EventHandler(this.btnRetroceso_Click);
             // 
             // Form1
             // 
@@ -78,9 +85,12 @@
             this.Controls.Add(this.btnAvance);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visor de imágenes";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.ResumeLayout(false);
 
         }
@@ -91,6 +101,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAvance;
         private System.Windows.Forms.Button btnRetroceso;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

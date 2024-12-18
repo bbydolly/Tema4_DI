@@ -23,12 +23,14 @@ namespace Ej8_Tema4_DI
         String pathCarpeta;
         PictureBox pictureBox;
         //Clase bitmap 
-        String[] extensiones = { ".bmp", ".gif", ".exif", ".jpg", ".png", ".tiff"};
+        String[] extensiones = { ".bmp", ".gif", ".exif", ".jpg", ".png", ".tiff" };
         FileInfo[] archivosExtension;
+        int cont = 0;
+        Form2 f2;
         public Form1()
         {
             InitializeComponent();
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -70,8 +72,10 @@ namespace Ej8_Tema4_DI
                 this.Size = new Size(64 * 8, ((archivosExtension.Length / 7) * 64) + 94);
                 panel1.Size = new Size(7 * 64, (archivosExtension.Length / 7) * 64);
 
-                Form2 f2 = new Form2(archivosExtension[0].FullName);
+                f2 = new Form2(archivosExtension[0].FullName);
                 f2.Show();
+
+
                 for (int i = 0; i < archivosExtension.Length; i++)
                 {
                     //Debug.WriteLine("archivo " + i + " "+archivosExtension[i]);
@@ -80,9 +84,11 @@ namespace Ej8_Tema4_DI
                     {
                         Debug.WriteLine(archivosExtension[i].FullName);
                         pictureBox.Image = new Bitmap(archivosExtension[i].FullName);//Image.FromFile(archivosExtension[i].ToString());
+                        pictureBox.Tag = archivosExtension[i].FullName;
                         pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                         pictureBox.BorderStyle = BorderStyle.None;
                         pictureBox.Size = new Size(64, 64); //distribuir en 7 columnas
+                        
 
                         if (i % 7 == 0)
                         {
@@ -105,6 +111,8 @@ namespace Ej8_Tema4_DI
 
                         }
                         pictureBox.Location = new Point(x, y);
+                        
+                        pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
                         panel1.Controls.Add(pictureBox);
                     }
                     catch (FileNotFoundException e)
@@ -125,6 +133,55 @@ namespace Ej8_Tema4_DI
 
 
 
+        }
+
+       private void pictureBox_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Clico en un pictureBox" + ((PictureBox)sender).Tag);
+            f2.Avance(((PictureBox)sender).Tag.ToString());
+        }
+
+        private void btnRetroceso_Click(object sender, EventArgs e)
+        {
+
+            cont--;
+            if (cont >= 0 && cont <= archivosExtension.Length - 1)
+            {
+                f2.Retroceso(archivosExtension[cont].FullName);
+            }
+            else
+            {
+                cont = archivosExtension.Length - 1;
+                f2.Retroceso(archivosExtension[cont].FullName);
+            }
+        }
+
+        private void btnAvance_Click(object sender, EventArgs e)
+        {
+            cont++;
+            if (cont <= archivosExtension.Length - 1 && cont >= 0)
+            {
+                f2.Avance(archivosExtension[cont].FullName);
+            }
+            else
+            {
+                cont = 0;
+                f2.Avance(archivosExtension[cont].FullName);
+            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)//avance
+            {
+                btnRetroceso_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.Right)//retroceso
+            {
+                
+
+                btnAvance_Click(sender, e);
+            }
         }
     }
 
