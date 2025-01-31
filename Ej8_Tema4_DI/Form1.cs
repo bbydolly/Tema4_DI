@@ -131,8 +131,6 @@ namespace Ej8_Tema4_DI
             }
 
 
-
-
         }
 
        private void pictureBox_Click(object sender, EventArgs e)

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace Ej8_Tema4_DI
 {
+
     public partial class Form2 : Form
     {
         PictureBox pictureBox;

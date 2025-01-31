@@ -14,6 +14,7 @@ using System.Windows.Forms;
 
 //Validado
 
+
 //Si dejas los combos editables que sean para hacer búsqueda, si no que no se puedan editar.
 //Ruta absoluta del archivo (debes usar variable de entorno)
 //No debes usar MOuseHover, es MouseEnter
