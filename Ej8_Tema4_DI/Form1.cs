@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+//TODO pendiente de validación
+
 namespace Ej8_Tema4_DI
 {
     //sizemode. zoom
@@ -27,6 +30,9 @@ namespace Ej8_Tema4_DI
         FileInfo[] archivosExtension;
         int cont = 0;
         Form2 f2;
+        DirectoryInfo directoryInfo;
+        FileInfo[] archivos;
+        Boolean flag = false;
         public Form1()
         {
             InitializeComponent();
@@ -59,70 +65,88 @@ namespace Ej8_Tema4_DI
         {
             int x = 0;
             int y = 14;
-            DirectoryInfo directoryInfo = new DirectoryInfo(pathCarpeta);
             try
             {
-
-                FileInfo[] archivos = directoryInfo.GetFiles();
-
+                directoryInfo = new DirectoryInfo(pathCarpeta);
+                archivos = directoryInfo.GetFiles();
                 archivosExtension = Array.FindAll(archivos, a => extensiones.Contains(a.Extension));
+                flag = true;
 
 
                 //try chatch gestion de permisos etc 
                 this.Size = new Size(64 * 8, ((archivosExtension.Length / 7) * 64) + 94);
                 panel1.Size = new Size(7 * 64, (archivosExtension.Length / 7) * 64);
 
-                f2 = new Form2(archivosExtension[0].FullName);
-                f2.Show();
-
-
-                for (int i = 0; i < archivosExtension.Length; i++)
+                try
                 {
-                    //Debug.WriteLine("archivo " + i + " "+archivosExtension[i]);
-                    pictureBox = new PictureBox();
-                    try
+
+
+                    f2 = new Form2(archivosExtension[0].FullName, this);
+                    f2.Show();
+
+
+                    for (int i = 0; i < archivosExtension.Length; i++)
                     {
-                        Debug.WriteLine(archivosExtension[i].FullName);
-                        pictureBox.Image = new Bitmap(archivosExtension[i].FullName);//Image.FromFile(archivosExtension[i].ToString());
-                        pictureBox.Tag = archivosExtension[i].FullName;
-                        pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                        pictureBox.BorderStyle = BorderStyle.None;
-                        pictureBox.Size = new Size(64, 64); //distribuir en 7 columnas
-                        
-
-                        if (i % 7 == 0)
+                        //Debug.WriteLine("archivo " + i + " "+archivosExtension[i]);
+                        pictureBox = new PictureBox();
+                        try
                         {
-                            //cambio de línea
-                            Debug.WriteLine("divisible 7");
-                            if (i != 0)
-                            {
+                            Debug.WriteLine(archivosExtension[i].FullName);
+                            pictureBox.Image = new Bitmap(archivosExtension[i].FullName);//Image.FromFile(archivosExtension[i].ToString());
+                            pictureBox.Tag = archivosExtension[i].FullName;
+                            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                            pictureBox.BorderStyle = BorderStyle.None;
+                            pictureBox.Size = new Size(64, 64); //distribuir en 7 columnas
 
-                                x = 0;
-                                y += 64;
+
+                            if (i % 7 == 0)
+                            {
+                                //cambio de línea
+                                Debug.WriteLine("divisible 7");
+                                if (i != 0)
+                                {
+
+                                    x = 0;
+                                    y += 64;
+                                }
+                            }
+                            else
+                            {
+                                if (i != 0)
+                                {
+
+                                    x += 65;
+                                }
+
+                            }
+                            pictureBox.Location = new Point(x, y);
+
+                            pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+                            panel1.Controls.Add(pictureBox);
+                            this.ClientSize = new Size(panel1.Width + 20, panel1.Height + 180);
+                            ToolStripItemCollection c = contextMenuStrip1.Items;
+                            foreach (ToolStripItem item in c)
+                            {
+                                item.Enabled = true;
                             }
                         }
-                        else
+                        catch (FileNotFoundException e)
                         {
-                            if (i != 0)
-                            {
-
-                                x += 65;
-                            }
-
+                            Debug.WriteLine("filenotfound    " + archivosExtension[i].ToString());
+                            //elimina los archivos corruptos
                         }
-                        pictureBox.Location = new Point(x, y);
-                        
-                        pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
-                        panel1.Controls.Add(pictureBox);
+                        lblInfo.Text = "Directorio de trabajo: " + directoryInfo.Name;
+
+
+
                     }
-                    catch (FileNotFoundException e)
-                    {
-                        Debug.WriteLine("filenotfound    " + archivosExtension[i].ToString());
-                        //elimina los archivos corruptos
-                    }
+                }
+                catch (IndexOutOfRangeException i)
+                {
 
-
-
+                    Debug.WriteLine("Índice fuera de los límites de la matriz");
+                    //lblInformativa.ForeColor = Color.Red;
+                    //lblInformativa.Text = "Índice fuera de los límites de la matriz";
                 }
             }
             catch (UnauthorizedAccessException u)
@@ -133,38 +157,48 @@ namespace Ej8_Tema4_DI
 
         }
 
-       private void pictureBox_Click(object sender, EventArgs e)
+        private void pictureBox_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Clico en un pictureBox" + ((PictureBox)sender).Tag);
-            f2.Avance(((PictureBox)sender).Tag.ToString());
+            //f2.Avance(((PictureBox)sender).Tag.ToString());
+            f2.Avance_Retroceso(((PictureBox)sender).Tag.ToString());
         }
 
         private void btnRetroceso_Click(object sender, EventArgs e)
         {
+            if (flag)
+            {
 
-            cont--;
-            if (cont >= 0 && cont <= archivosExtension.Length - 1)
-            {
-                f2.Retroceso(archivosExtension[cont].FullName);
+                cont--;
+                if (cont >= 0 && cont <= archivosExtension.Length - 1)
+                {
+                    //f2.Retroceso(archivosExtension[cont].FullName);
+                }
+                else
+                {
+                    cont = archivosExtension.Length - 1;
+                    // f2.Retroceso(archivosExtension[cont].FullName);
+                }
+                f2.Avance_Retroceso(archivosExtension[cont].FullName);
             }
-            else
-            {
-                cont = archivosExtension.Length - 1;
-                f2.Retroceso(archivosExtension[cont].FullName);
-            }
+
         }
 
         private void btnAvance_Click(object sender, EventArgs e)
         {
-            cont++;
-            if (cont <= archivosExtension.Length - 1 && cont >= 0)
+            if (flag)
             {
-                f2.Avance(archivosExtension[cont].FullName);
-            }
-            else
-            {
-                cont = 0;
-                f2.Avance(archivosExtension[cont].FullName);
+                cont++;
+                if (cont <= archivosExtension.Length - 1 && cont >= 0)
+                {
+                    //  f2.Avance(archivosExtension[cont].FullName);
+                }
+                else
+                {
+                    cont = 0;
+                    //f2.Avance(archivosExtension[cont].FullName);
+                }
+                f2.Avance_Retroceso(archivosExtension[cont].FullName);
             }
         }
 
@@ -176,10 +210,24 @@ namespace Ej8_Tema4_DI
             }
             else if (e.KeyCode == Keys.Right)//retroceso
             {
-                
+                //menú contextual
+
 
                 btnAvance_Click(sender, e);
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("¿Desea salir de la aplicación?", "Visor de imágenes", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+            {
+                e.Cancel = true;//Cancelo el cierre del formulario
+            }
+        }
+
+        private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 
