@@ -69,13 +69,13 @@
             this.anteriorToolStripMenuItem,
             this.cerrarToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 48);
             // 
             // anteriorToolStripMenuItem
             // 
             this.anteriorToolStripMenuItem.Enabled = false;
             this.anteriorToolStripMenuItem.Name = "anteriorToolStripMenuItem";
-            this.anteriorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.anteriorToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.anteriorToolStripMenuItem.Text = "Anterior";
             this.anteriorToolStripMenuItem.Click += new System.EventHandler(this.btnRetroceso_Click);
             // 
@@ -83,7 +83,7 @@
             // 
             this.cerrarToolStripMenuItem.Enabled = false;
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
@@ -172,17 +172,17 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAvance;
         private System.Windows.Forms.Button btnRetroceso;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label lblInformativa;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblInfo;
         public System.Windows.Forms.Label lblDatosImage;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem anteriorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Label lblInfo;
     }
 }
 

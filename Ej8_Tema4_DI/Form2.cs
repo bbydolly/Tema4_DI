@@ -34,6 +34,7 @@ namespace Ej8_Tema4_DI
             pictureBox.Image = new Bitmap(ruta);//Image.FromFile(archivosExtension[i].ToString());
             pictureBox.BorderStyle = BorderStyle.None;
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.ContextMenuStrip = this.contextMenuStrip1;
 
             Debug.WriteLine(ruta.Substring(ruta.LastIndexOf("\\") + 1));
             this.Controls.Add(pictureBox);
@@ -93,7 +94,25 @@ namespace Ej8_Tema4_DI
             return auxcad;
         }
 
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form1.lblInfo.Text = "";
+            Form1.lblDatosImage.Text = "";
+            Form1.panel1.Controls.Clear();
+            Form1.Size = new Size(400,150);
+        }
 
+        //TODO + cierra el secundario y borrar la lista de miniaturas
+        //Mostrar el enu contextual
+        private void anteriorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1.btnRetroceso_Click(sender, e);
+        }
 
+        private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Form1.btnAvance_Click(sender, e);
+            this.Close();
+        }
     }
 }

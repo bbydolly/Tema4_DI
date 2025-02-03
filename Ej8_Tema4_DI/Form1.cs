@@ -11,7 +11,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-//TODO pendiente de validación
+//TODO
+//----Menú contextual secundario falta sig
+//--- 
+//---cambio de directorio ojo, confirmar que cambia (admitir cancelar)
+//---cierre de secundario, ojo, siguen los datos y avanza y retrocede
+//--- 
+//----
 
 namespace Ej8_Tema4_DI
 {
@@ -33,6 +39,7 @@ namespace Ej8_Tema4_DI
         DirectoryInfo directoryInfo;
         FileInfo[] archivos;
         Boolean flag = false;
+        bool flagCierre = false;
         public Form1()
         {
             InitializeComponent();
@@ -41,24 +48,27 @@ namespace Ej8_Tema4_DI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            panel1.Controls.Clear();
+            if (flagCierre)
+            {
+                f2.Close();
+                lblInfo.Text = "";
+                lblDatosImage.Text = "";
+                panel1.Controls.Clear();
+            }
+
             //TODO filtro para que salgan las carpetas a las que el usuario tiene permiso 
             folderBrowserDialog = new FolderBrowserDialog();
             DialogResult res = folderBrowserDialog.ShowDialog();
 
-            switch (res)
+            //un if
+            if (res == DialogResult.OK)
             {
-
-                case DialogResult.OK:
-                    pathCarpeta = folderBrowserDialog.SelectedPath;
-                    Debug.Write(pathCarpeta);
-                    addImagenes(pathCarpeta);
-                    //folderBrowserDialog.ope
-                    break;
-                case DialogResult.Cancel:
-
-                    break;
-
+                pathCarpeta = folderBrowserDialog.SelectedPath;
+                addImagenes(pathCarpeta);
             }
+
+            
         }
 
         public void addImagenes(String pathCarpeta)
@@ -83,6 +93,7 @@ namespace Ej8_Tema4_DI
 
                     f2 = new Form2(archivosExtension[0].FullName, this);
                     f2.Show();
+                    flagCierre = true;
 
 
                     for (int i = 0; i < archivosExtension.Length; i++)
@@ -135,6 +146,10 @@ namespace Ej8_Tema4_DI
                             Debug.WriteLine("filenotfound    " + archivosExtension[i].ToString());
                             //elimina los archivos corruptos
                         }
+                        catch (ArgumentException arg)
+                        {
+                            Debug.WriteLine("Argument exception");
+                        }
                         lblInfo.Text = "Directorio de trabajo: " + directoryInfo.Name;
 
 
@@ -143,7 +158,7 @@ namespace Ej8_Tema4_DI
                 }
                 catch (IndexOutOfRangeException i)
                 {
-
+                    lblInfo.Text = "Directorio vacío/y o sin imágenes.";
                     Debug.WriteLine("Índice fuera de los límites de la matriz");
                     //lblInformativa.ForeColor = Color.Red;
                     //lblInformativa.Text = "Índice fuera de los límites de la matriz";
@@ -151,6 +166,7 @@ namespace Ej8_Tema4_DI
             }
             catch (UnauthorizedAccessException u)
             {
+                lblInfo.Text = "No estás autorizado a acceder a la carpeta seleccionada.";
                 Debug.WriteLine("No estás autorizado a acceder a la carpeta seleccionada");
             }
 
@@ -164,7 +180,7 @@ namespace Ej8_Tema4_DI
             f2.Avance_Retroceso(((PictureBox)sender).Tag.ToString());
         }
 
-        private void btnRetroceso_Click(object sender, EventArgs e)
+        public void btnRetroceso_Click(object sender, EventArgs e)
         {
             if (flag)
             {
@@ -184,7 +200,7 @@ namespace Ej8_Tema4_DI
 
         }
 
-        private void btnAvance_Click(object sender, EventArgs e)
+        public void btnAvance_Click(object sender, EventArgs e)
         {
             if (flag)
             {
@@ -206,7 +222,7 @@ namespace Ej8_Tema4_DI
         {
             if (e.KeyCode == Keys.Left)//avance
             {
-                btnRetroceso_Click(sender, e);
+                btnRetroceso_Click(sender, e);// Mejor PerformClick
             }
             else if (e.KeyCode == Keys.Right)//retroceso
             {

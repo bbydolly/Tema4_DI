@@ -62,7 +62,8 @@ namespace Ej9_Tema4_DI
 
         public void Save_File(String path)
         {
-            using (StreamWriter sw = new StreamWriter(path))
+         
+            using (StreamWriter sw = new StreamWriter(Environment.GetEnvironmentVariable("homepath")+"\\"+path))
             {
 
                 sw.WriteLine(txtEditor.Text);
