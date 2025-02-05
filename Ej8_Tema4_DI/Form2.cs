@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+//TODO pndiente de validar
+
 namespace Ej8_Tema4_DI
 {
 
@@ -113,6 +116,11 @@ namespace Ej8_Tema4_DI
         {
             // Form1.btnAvance_Click(sender, e);
             this.Close();
+        }
+
+        private void siguienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1.btnAvance_Click(sender, e);
         }
     }
 }

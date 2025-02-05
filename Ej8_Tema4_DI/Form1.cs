@@ -11,13 +11,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-//TODO
+//TODO pendiente de validación
 //----Menú contextual secundario falta sig
-//--- 
 //---cambio de directorio ojo, confirmar que cambia (admitir cancelar)
 //---cierre de secundario, ojo, siguen los datos y avanza y retrocede
-//--- 
-//----
+
 
 namespace Ej8_Tema4_DI
 {
